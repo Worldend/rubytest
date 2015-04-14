@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+	<header>
+		<ol class="breadcrumb">	
+		  <li><%= link_to 'Главная', controller: 'home'%></li>
+		  <li><%= link_to 'Статьи', articles_path%></li>
+		  <li><a href="http://36n6.ru" target="blank">Здоровье</a></li>
+		</ol>
+	</header>
 
-<%= yield %>
-
+	<div class="row">
+		<div class="col-md-8">
+			<%= yield %>
+		</div>
+		<div class="col-md-4">
+			.col-md-4
+		</div>
+	</div>
+</div>
 </body>
 </html>

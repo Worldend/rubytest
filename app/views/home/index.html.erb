@@ -1,17 +1,23 @@
 <% @article = Article.new %>
 <h1>Hello, Rails!</h1>
 <%= @articles.each do |a| %>
-	<div><strong>Заголовок: </strong><%= a.title %></div>
-	<div><strong>Текст: </strong><%= a.text %></div>
+<div class="page-header">
+        <h2><%= a.title %></h2>
+        <p class="lead">
+        	<%= link_to a.text, a %>
+        </p>
+</div>
 <% end %>
 <%= render 'articles/form'%>
 <%= link_to 'New article', new_article_path %>
 <span class="glyphicon glyphicon-floppy-open"></span>
 
-<%= select_time(Time.now)%>
+<%
+=begin select_time(Time.now)%>
 <%= select_date(Date.today)%>
 <%=time_ago_in_words(3.minutes.from_now)%>
-<%=time_select("order", "submitted")%>
+<%=time_select("order", "submitted")
+=end%>
 
 <div>
   <%= fields_for @article do |a| %>
@@ -19,7 +25,9 @@
     text  : <%= a.text_field :text %>
   <% end %>
 </div>
-
-<%=file_field(:user, :avatar)%>
-<%=password_field(:login, :pass)%>
-<%=url_field(:user, :url)%>
+<%
+=begin
+=file_field(:user, :avatar)
+=password_field(:login, :pass)
+=url_field(:user, :url)
+=end%>

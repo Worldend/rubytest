@@ -3,6 +3,7 @@
 	<name>railstest</name>
 	<comment></comment>
 	<projects>
+		<project>jQuery</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

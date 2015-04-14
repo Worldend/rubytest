@@ -14,3 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+ready = function(){
+	Core.headerBreadcrambs()
+}
+
+$(document).on('page:load',ready)
+
+Core = new function(){
+	this.headerBreadcrambs = function(){
+		var url_global = window.location.pathname,
+		    breadcrumds = $('header .breadcrumb'),
+		    // Ищем ссылку с таким href
+		    link = breadcrumds.find('li a[href="'+window.location.pathname+'"]'),
+		    li = link.parent('li');
+ 		breadcrumds.find('li').removeClass('active');
+ 		link.remove()
+ 		li.html(link.text())
+ 	}
+}
