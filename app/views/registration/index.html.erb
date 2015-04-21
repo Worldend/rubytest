@@ -1,2 +1,33 @@
-<h1>Registration#index</h1>
-<p>Find me in app/views/registration/index.html.erb</p>
+<div class="page-header">
+  <h1><span class="label label-default">Добро пожаловать</span>
+  	<p><small>Вы находитесь на странице регистрации</small></p>
+</h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<h4>Заполните поля<h4>
+  </div>
+   <%= fields_for @user do |u|%>
+  	<div class="panel-footer">
+		<div class="input-group">
+  			<span class="input-group-addon">@</span>
+  			<%= u.text_field :login, :class => 'form-control', :placeholder => 'Username'%>
+  			<!-- <input type="text" class="form-control" placeholder="Username">  -->
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="input-group">
+		  	<span class="input-group-addon">
+		  		<span class="glyphicon glyphicon-lock"></span>
+		  	</span>
+		  	<%= u.text_field :password, :class => 'form-control ', :placeholder => 'Password'%>
+		  	<!-- <input type="text" class="form-control" placeholder="Password">   -->
+		</div>
+	</div>	
+	<% end %>
+</div>
+<div type="button" class="btn btn-primary senddata"
+	data-link="<%= new_registration_path%>">
+	В атаку
+</div>

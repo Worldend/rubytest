@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  get 'registration/index'
+  #get 'users/profile'
+
+  # get 'registration/index'
 
   root :to => "home#index" 
   get 'home/index'
   resources :articles do
-	resources :comments
+	 resources :comments
   end
+  
+  resources :registration
+  
+  get 'id:id' => 'users#profile', as: 'users_profile'
+  get 'users' => 'users#list', as: 'users_list'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

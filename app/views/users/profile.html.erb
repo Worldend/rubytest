@@ -1,0 +1,15 @@
+<h1>Users#profile</h1>
+<p>Find me in app/views/users/profile.html.erb</p>
+<div class='col-xs-6 col-sm-3'>
+<%= image_tag 'index.svg', :class => 'img-thumbnail', :alt => 'Крутая авка'%>
+</div>
+<div class='col-xs-12 col-sm-6 col-md-8'> 
+<%#@user.each do |user| 
+%>
+
+	<div><%= @user.first_name %></div>
+	<div><%= @user.last_name %></div>
+	<div><%= @user.patronymic %></div>
+<% #end 
+%>
+</div>

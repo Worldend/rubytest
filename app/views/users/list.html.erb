@@ -1,0 +1,5 @@
+<h2>Наши пользователи</h2>
+<% @users.each do |user| %>
+<br />
+<div><%= link_to "#{user.first_name} #{user.last_name} #{user.patronymic}", users_profile_path(user) %></div>
+<% end %>
