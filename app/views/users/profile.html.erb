@@ -1,9 +1,10 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
-<div class='col-xs-6 col-sm-3'>
-<%= image_tag 'index.svg', :class => 'img-thumbnail', :alt => 'Крутая авка'%>
+
+<div class='col-md-4'>
+	<%= image_tag 'index.svg', class: 'img-thumbnail', alt: 'Крутая авка', width: '90%'%>
+	
+	<button id="editprofile" type="button" class="btn btn-success" style="margin-top: 10px; width: 90%">Изменить информацию</button>
 </div>
-<div class='col-xs-12 col-sm-6 col-md-8'> 
+<div class='col-md-8'> 
 <%#@user.each do |user| 
 %>
 
@@ -12,4 +13,31 @@
 	<div><%= @user.patronymic %></div>
 <% #end 
 %>
+</div>
+
+<div id="myModalBox" class="modal fade">
+    <div class="modal-content">
+      <!-- Заголовок модального окна -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Редактировать профиль</h4>
+      </div>
+      <!-- Основной текст сообщения -->
+      <div class="modal-body">
+      	<%= fields_for @user do |u| %>
+      		<%= u.text_field :first_name, class: 'form-control',placeholder: 'Имя' %>
+      		<%= u.text_field :last_name, class: 'form-control', placeholder: 'Фамилия' %>
+      		<%= u.text_field :patronymic, class: 'form-control', placeholder: 'Отчество' %>
+      	<% end %>
+        <p>Вы хотите сохранить изменения, сделанные в документе перед закрытием?</p>
+        <p class="text-warning"><small>Если Вы не сохраните, изменения будут потеряны.</small></p>
+      </div>
+      <!-- Нижняя часть модального окна -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary senddata" 
+        		data-link="<%= edit_user_path%>"
+        		data-input="#myModalBox">Сохранить изменения</button>
+      </div>
+    </div>
 </div>

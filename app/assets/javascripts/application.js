@@ -14,8 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
+
 ready = function(){
 	Core.headerBreadcrambs()
+	
 }
 
 $(document).on('page:load',ready)
