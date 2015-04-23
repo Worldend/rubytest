@@ -1,4 +1,17 @@
 class UsersController < ApplicationController
+  
+  def index
+    @users = User.all
+    render 'list'
+  end
+  
+  def upload
+    uploaded_io = params[:users][:avatar_id]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -14,12 +27,20 @@ class UsersController < ApplicationController
       #render :text => 'Not Found', :status => 404
   end
   
-  def list
-    @users = User.all
-  end
-  
-  def edit
-    
+  def update
+    #logger.debug { params.inspect }
+    #render :nothing => true
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+        @json = 'HELLO';
+    else
+       @json = '123'
+    end
+    respond_to do |format|
+        #format.html { redirect_to :back, notice: 'You don\'t  like this picture anymore.' }
+        #format.json { render json: @json }
+        format.js {render :js => "window.location.href='"+users_profile_path+"'"}
+    end
   end
   
   def sign_in

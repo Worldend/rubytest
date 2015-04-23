@@ -15,6 +15,15 @@
 %>
 </div>
 
+<!-- <div class="simple_form">
+<%= simple_form_for @user do |f| %>
+  <%= f.input :login %>
+  <%= f.input :password %>
+  <%= f.button :submit %>
+<% end %>
+</div> -->
+
+
 <div id="myModalBox" class="modal fade">
     <div class="modal-content">
       <!-- Заголовок модального окна -->
@@ -36,7 +45,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
         <button type="button" class="btn btn-primary senddata" 
-        		data-link="<%= edit_user_path%>"
+        		data-link="<%= user_path%>"
         		data-input="#myModalBox">Сохранить изменения</button>
       </div>
     </div>

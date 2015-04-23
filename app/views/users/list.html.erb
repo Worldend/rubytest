@@ -1,5 +1,17 @@
-<h2>Наши пользователи</h2>
+<h1><span class="label label-default">Наши пользователи</span></h1>
 <% @users.each do |user| %>
-<br />
-<div><%= link_to "#{user.first_name} #{user.last_name} #{user.patronymic}", users_profile_path(user) %></div>
+<div class="list-group">
+  <%= link_to users_profile_path(user), class: 'list-group-item' do %>
+    <h4 class="list-group-item-heading"><%=user.last_name%></h4>
+    <p class="list-group-item-text"><%="#{user.first_name} #{user.patronymic}"%></p>
+  <% end %>
+</div>
+
 <% end %>
+<script>	
+	$('.list-group-item').hover(function() {
+		$(this).addClass('active')
+	}, function() {
+		$(this).removeClass('active')
+	});
+</script>

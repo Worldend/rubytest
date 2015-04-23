@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   
   resources :registration
   
-  resources :users
+  resources :users, path_names: { index: 'users'}  
   
   get 'id:id' => 'users#profile', as: 'users_profile'
-  get 'users' => 'users#list', as: 'users_list'
+  post 'users/upload' => 'users#upload'
+  #get 'users' => 'users#list', as: 'users_list'
   
   get 'sign_in' => 'auth#sign_in'
   get 'sign_up' => 'auth#sign_up'
