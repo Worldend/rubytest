@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 20150423100513) do
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
 
-  create_table "sections", force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-  end
-
-  create_table "specialties", force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.integer  "avatar_id",  limit: 4
     t.string   "login",      limit: 255
@@ -52,24 +44,5 @@ ActiveRecord::Schema.define(version: 20150423100513) do
 
   add_index "users", ["avatar_id"], name: "index_users_on_avatar_id", using: :btree
 
-  create_table "worker", force: :cascade do |t|
-    t.integer "section_id", limit: 4,   null: false
-    t.string  "name",       limit: 255, null: false
-    t.string  "salary",     limit: 255, null: false
-  end
-
-  add_index "worker", ["section_id"], name: "section_id", using: :btree
-
-  create_table "worker_has_specialty", id: false, force: :cascade do |t|
-    t.integer "user_id",      limit: 4, null: false
-    t.integer "specialty_id", limit: 4, null: false
-  end
-
-  add_index "worker_has_specialty", ["specialty_id"], name: "specialty_id", using: :btree
-  add_index "worker_has_specialty", ["user_id"], name: "user_id", using: :btree
-
   add_foreign_key "comments", "articles"
-  add_foreign_key "worker", "sections", name: "worker_ibfk_1"
-  add_foreign_key "worker_has_specialty", "specialties", name: "worker_has_specialty_ibfk_2", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "worker_has_specialty", "worker", column: "user_id", name: "worker_has_specialty_ibfk_1", on_update: :cascade, on_delete: :cascade
 end
