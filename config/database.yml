@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: 415263
+  password: 4152633
   socket: /var/run/mysqld/mysqld.sock
 
 development:
